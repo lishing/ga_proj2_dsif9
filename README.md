@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #  ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Project 2 - Singapore Housing Data and Kaggle Challenge
 
 Welcome to Project 2! It's time to start modeling.
@@ -181,3 +182,6 @@ In order to pass the project, students must earn a minimum score of 1 for each c
 ### REMEMBER:
 
 This is a learning environment and you are encouraged to try new things, even if they don't work out as well as you planned! While this rubric outlines what we look for in a _good_ project, it is up to you to go above and beyond to create a _great_ project. **Learn from your failures and you'll be prepared to succeed in the workforce**.
+=======
+# ga_proj2_dsif9
+>>>>>>> 01e0b083377a29d7be6bf22ac899685772fab2b8
