@@ -10,7 +10,7 @@ This is the second graded project, as part of the General Assembly Data Science 
 
 There are some common traits that makes a HDB desirable: location, size, and its remaining lease years. While Size and HDB Age is something that has an absolute gauge, location is a trait that is deemed desirable in a relative way. For example, the [recent move of ACS to Tengah](https://www.straitstimes.com/singapore/housing/acs-primary-relocation-likely-to-boost-future-tengah-bto-application-rates-interest-in-bukit-batok-ecs-analysts) has raised hopes of the future profits of selling their HDB flats in the near future. Also, Bishan was not too hot a place in the 90s while it is still being developed, but is now one of the hottest HDB areas, as shown by the data of this project.
 
-![Resale Prices by Towns](../images/by_town.png)
+![Resale Prices by Towns](images/by_town.png)
 
 The goal of this project is to study the different features that makes a HDB resale flat desirable. The output of this is an article on HDB's portal 'My Nice Home' and guide current and future owners on the opportunities to make the best out of their HDB flats after MOP.
 
@@ -18,6 +18,7 @@ The goal of this project is to study the different features that makes a HDB res
 
 ## Structure
 
+```
 GA-Project2
 |__ code
 |   |__ 01_EDA_and_Cleaning.ipynb   
@@ -32,10 +33,17 @@ GA-Project2
 |   |__ clean_pred_data.csv
 |   |__ submission_hdb.csv
 |__ images
+|   |__ by_flatmodel.png
+|   |__ by_flattype.png
+|   |__ by_floor.png
+|   |__ by_planningarea.png
+|   |__ by_remaining_lease.png
+|   |__ by_town.png
+|   |__ feature_coeff.png
 |   |__ Kaggle_submission_1.png
 |__ presentation.pdf
 |__ README.md
-
+```
 ---
 
 ## Datasets and Methodology
@@ -96,10 +104,10 @@ The project follows the techniques required in a data science project
 4. Majority of HDB are within 50-200 sqm in terms of size. The range of HDB resale prices is the highest among 100-150 sqm in size.
 5. The distribution of resale price varies according to the remaining lease years. Newer flats have a wider range of resale prices, and closer to the higher side of resale prices.
 
-![Resale Price by Flat Types](../images/by_flattypes.png)
-![Resale Price by Flat Model](../images/by_flatmodel.png)
-![Resale Price by Mid of Floor Range](../images/by_floor.png)
-![Resale Price by Remaining Lease Years](../images/by_remaining_lease.png)
+![Resale Price by Flat Types](images/by_flattypes.png)
+![Resale Price by Flat Model](images/by_flatmodel.png)
+![Resale Price by Mid of Floor Range](images/by_floor.png)
+![Resale Price by Remaining Lease Years](images/by_remaining_lease.png)
 
 ## Preprocessing and Feature Engineering
 In this section, I performed the following
@@ -137,7 +145,7 @@ After removing the features, I will fit it into the ridge regression model.
 
 Here is the features from the improved model. 
 
-![Feature Coefficients](../images/feature_coeff.png)
+![Feature Coefficients](images/feature_coeff.png)
 
 -----
 
