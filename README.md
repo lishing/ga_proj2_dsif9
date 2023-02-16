@@ -19,7 +19,7 @@ The goal of this project is to study the different features that makes a HDB res
 ## Structure
 
 ```
-GA-Project2
+ga_proj2_dsif9
 |__ code
 |   |__ 01_EDA_and_Cleaning.ipynb   
 |   |__ 02_Preprocessing_and_Feature_Engineering.ipynb   
@@ -104,7 +104,7 @@ The project follows the techniques required in a data science project
 4. Majority of HDB are within 50-200 sqm in terms of size. The range of HDB resale prices is the highest among 100-150 sqm in size.
 5. The distribution of resale price varies according to the remaining lease years. Newer flats have a wider range of resale prices, and closer to the higher side of resale prices.
 
-![Resale Price by Flat Types](images/by_flattypes.png)
+![Resale Price by Flat Types](images/by_flattype.png)
 ![Resale Price by Flat Model](images/by_flatmodel.png)
 ![Resale Price by Mid of Floor Range](images/by_floor.png)
 ![Resale Price by Remaining Lease Years](images/by_remaining_lease.png)
