@@ -1,187 +1,190 @@
-<<<<<<< HEAD
-#  ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Project 2 - Singapore Housing Data and Kaggle Challenge
+# An analysis on HDB resale prices to understand the features that matter in predicting its future prices
 
-Welcome to Project 2! It's time to start modeling.
+## Project Background 
 
-Shoutout to **Ben Lim**, Instructional Associate for DSIF-SG-4 for compiling this project!
+This is the second graded project, as part of the General Assembly Data Science Immersive (Flex) course. 
 
-**Primary Learning Objectives:**
-1. Creating and iteratively refining a regression model
-2. Using [Kaggle](https://www.kaggle.com/) to practice the modeling process
-3. Providing business insights through reporting and presentation.
+## Problem Statement
 
-You are tasked with creating a regression model based on Singapore Housing Dataset. This model will predict the price of a house at sale.
+**Aim: To be find out the desirable traits of a HDB resale flat to be sold at a good price**
 
-This Dataset is an exceptionally detailed one with over 70 columns of different features relating to houses.
+There are some common traits that makes a HDB desirable: location, size, and its remaining lease years. While Size and HDB Age is something that has an absolute gauge, location is a trait that is deemed desirable in a relative way. For example, the [recent move of ACS to Tengah](https://www.straitstimes.com/singapore/housing/acs-primary-relocation-likely-to-boost-future-tengah-bto-application-rates-interest-in-bukit-batok-ecs-analysts) has raised hopes of the future profits of selling their HDB flats in the near future. Also, Bishan was not too hot a place in the 90s while it is still being developed, but is now one of the hottest HDB areas, as shown by the data of this project.
 
-Secondly, we are hosting a competition on Kaggle to give you the opportunity to practice the following skills:
+![Resale Prices by Towns](../images/by_town.png)
 
-- Refining models over time
-- Use of train-test split, cross-validation, and data with unknown values for the target to simulate the modeling process
-- The use of Kaggle as a place to practice data science
+The goal of this project is to study the different features that makes a HDB resale flat desirable. The output of this is an article on HDB's portal 'My Nice Home' and guide current and future owners on the opportunities to make the best out of their HDB flats after MOP.
 
-As always, you will be submitting a technical report and a presentation. **You may find that the best model for Kaggle is not the best model to address your data science problem.**
+----
 
-## Set-up
+## Structure
 
-Before you begin working on this project, please do the following:
-
-1. Sign up for an account on [Kaggle](https://www.kaggle.com/)
-2. **IMPORTANT**: Click this link ([Regression Challenge Sign Up](https://www.kaggle.com/t/dc36375f24b2489cb84f3f1d76e25b98)) to **join** the competition (otherwise you will not be able to make submissions!)
-3. Review the material and download data files on the [DSI-SG-Project-2 Regression Challenge](https://www.kaggle.com/competitions/dsi-sg-project-2-regression-challenge-hdb-price/overview)
-4. Review the [data description](https://www.kaggle.com/competitions/dsi-sg-project-2-regression-challenge-hdb-price/data).
-
-## The Modeling Process
-
-1. The train dataset has all of the columns that you will need to generate and refine your models. The test dataset has all of those columns except for the target that you are trying to predict in your Regression model.
-2. Generate your regression model using the training data. We expect that within this process, you'll be making use of:
-    - train-test split
-    - cross-validation / grid searching for hyperparameters
-    - strong exploratory data analysis to question correlation and relationship across predictive variables
-    - code that reproducibly and consistently applies feature transformation (such as the preprocessing library)
-3. Predict the values for your target column in the test dataset and consider submitting your predictions to Kaggle to see how your model does against unknown data.
-    - **Note**: Kaggle expects to see your submissions in a specific format. Check the challenge's page to make sure you are formatting your CSVs correctly!
-    - **You are limited to models you've learned in class so far**. In other words, you cannot use advanced supervised learning models like XGBoost, Neural Networks.
-4. Evaluate your models!
-    - consider your evaluation metrics
-    - consider your baseline score
-    - how can your model be used for inference?
-    - why do you believe your model will generalize to new data?
-
-## Submission
-
-Materials must be submitted by the date specified by your Instructional Team through your GitHub account repo shared with the Instructional Team.
-
-Your technical report will be hosted on Github Enterprise. Make sure it includes:
-
-- A README.md (that isn't this file)
-- Jupyter notebook(s) with your analysis and models (renamed to describe your project)
-- At least one successful prediction submission on [DSI-SG-Project-2 Regression Challenge](https://www.kaggle.com/competitions/dsi-sg-project-2-regression-challenge-hdb-price) --  you should see your name in the "[Leaderboard](https://www.kaggle.com/competitions/dsi-sg-project-2-regression-challenge-hdb-price/leaderboard)" tab.
-- Data files
-- Presentation slides
-- Any other necessary files (images, etc.)
+GA-Project2
+|__ code
+|   |__ 01_EDA_and_Cleaning.ipynb   
+|   |__ 02_Preprocessing_and_Feature_Engineering.ipynb   
+|   |__ 03_Modeling_and_Evaluation.ipynb  
+|__ data
+|   |__ train.csv
+|   |__ test.csv
+|   |__ preprocessed_train_data.csv
+|   |__ preprocessed_test_data.csv
+|   |__ clean_data.csv
+|   |__ clean_pred_data.csv
+|   |__ submission_hdb.csv
+|__ images
+|   |__ Kaggle_submission_1.png
+|__ presentation.pdf
+|__ README.md
 
 ---
 
-## Presentation Structure
+## Datasets and Methodology
 
-- **Presentation Time: 15 minutes**
-- Use Google Slides or some other visual aid (Keynote, Powerpoint, etc).
-- Consider the audience. Assume you are presenting to a non-technical audience (real estate agents, property owners, etc.).
-- Start with the **data science problem**.
-- Use visuals that are appropriately scaled and interpretable.
-- Talk about your procedure/methodology (high level, **CODE IS ALWAYS INAPPROPRIATE FOR A NON-TECHNICAL AUDIENCE**).
-- Talk about your primary findings.
-- Make sure you provide **clear recommendations** that follow logically from your analyses and narrative and answer your data science problem.
+The dataset given is available on [Kaggle](https://www.kaggle.com/competitions/dsi-sg-project-2-regression-challenge-hdb-price)
 
-Be sure to rehearse and time your presentation before class.
+|Feature|Type|Description|
+|---|---|---|
+|flat_type|int|Consist of the types: '4 ROOM', '5 ROOM', 'EXECUTIVE', '3 ROOM', '2 ROOM', '1 ROOM', 'MULTI-GENERATION'|
+|floor_area_sqm|int|floor area of the resale flat unit in square metres|
+|Tranc_Year|float|the year of transaction, recorded from 2012 - 2021|
+|mid|int|middle value of storey_range|
+|year_completed|integer|year which construction was completed for resale flat| 
+|commercial|int|boolean value if resale flat has commercial units in the same block| 
+|precinct_pavillion|int|boolean value if resale flat has a pavilion in the same block| 
+|total_dwelling_units|int|total number of residential dwelling units in the resale flat|
+|Mall_Nearest_Distance|float|distance (in metres) to the nearest mall|
+|Hawker_Nearest_Distance|float|distance (in metres) to the nearest hawker centre|
+|mrt_nearest_distance|float|distance (in metres) to the nearest MRT station|
+|bus_stop_nearest_distance|float|distance (in metres) to the nearest bus stop|
+|pri_sch_nearest_distance|float|distance (in metres) to the nearest primary school|
+|cutoff_point|float|PSLE cutoff point of the nearest secondary school|
+|region|int|To reduce the amount of one-hot encoding on town, I will group them into 5 regions, taking reference from [the URA list of regions by towns](https://www.newlaunchesreview.com/regions-of-singapore/). Taking Central as the baseline, this measures the effect of a HDB located in East, North, North East, and West are measured against the effect of a HDB located in the Central.|
+|flat_model|int|Taking Standard as the baseline, this measures the effect of a type of HDB according to its model. They are further grouped into 13 types: 'Executive Maisonette':'Maisonette', 'Terrace':'Special', 'Adjoined flat':'Special','Type S1S2':'Special', 'DBSS':'Special', 'Model A2':'Model A', 'Premium Apartment':'Apartment', 'Improved':'Standard', 'Simplified':'Model A', '2-room':'Standard'|
+|sec_cutoff|float|Interaction term of sec_sch_nearest_distance with cutoff_point of the secondary school. This is introduced to capture the effect of the quality of secondary school and its distance with the HDB flat|
 
 ---
 
-## Rubric
-Teaching team will evaluate your project using the following criteria.  You should make sure that you consider and/or follow most if not all of the considerations/recommendations outlined below **while** working through your project.
+## Techniques and methodology
+The project follows the techniques required in a data science project
+1. Data Cleaning and Imputation
+2. Exploratory Data Analysis
+3. Preprocessing and Feature Engineering
+4. Modelling
+5. Model Tuning 
+6. Evaluation
 
-**Note:** Presentation will be done as a group while codes will be prepared and submitted by each student.
+## Data Cleaning
+1. There are significant null values for some variables in the original dataset. 
+2. if there is no effect from the null values on the y-variables, I will proceed to drop them
+3. if there is an effect from the null values on the y-variables, I will first study it's distribution, before deciding on imputing the values with median, mode, or mean
+    - one of the variables is skewed to the right, so I imputed the values with median.[source](https://medium.com/analytics-vidhya/appropriate-ways-to-treat-missing-values-f82f00edd9be)
 
-**Scores will be out of 27 points based on the 9 items in the rubric.** <br>
-*3 points per section*<br>
+## EDA
+1. Then, I study the relationship between the well-known factors for a high HDB resale price. These factors include region, floor area, remaining lease years, and the HDB's distance to amenities.
+2. Besides, there are other features available in the dataset. There are a total of 77 features.
+3. To be able to capture all the variables, I will find out the effects of the variable's mean/medianx with resale price. This is to prevent bias against the preconception on the well-known factors such as region, floor area, distance to MRT.
+4. Then, I will find out the boxplot distributions of these variables. This is to find out the distribution of outliers
+5. There are three areas of numbers that I look at:
+    - Numeric : Whether they are discrete or continuous
+    - Temporal : their effect on y-variable
+    - categorical: to further group them into suitable variables
 
-| Score | Interpretation |
-| --- | --- |
-| **0** | *Project fails to meet the minimum requirements for this item.* |
-| **1** | *Project meets the minimum requirements for this item, but falls significantly short of portfolio-ready expectations.* |
-| **2** | *Project exceeds the minimum requirements for this item, but falls short of portfolio-ready expectations.* |
-| **3** | *Project meets or exceeds portfolio-ready expectations; demonstrates a thorough understanding of every outlined consideration.* |
+### Findings (to add viz for the rest)
+1. Without controlling the flat type, HDB resale flats of town and planning areas are roughly the same. I will drop planning area (the higher amount of variables), and keep town for further grouping
+2. Most of the outliers are for bigger flat types - notably 3-room, 4-room and 5-room, which has a long tail.
+3. When I examine the median resale prices by the middle storey of storey range, there is a linear relationship (except for floor 15). 
+4. Majority of HDB are within 50-200 sqm in terms of size. The range of HDB resale prices is the highest among 100-150 sqm in size.
+5. The distribution of resale price varies according to the remaining lease years. Newer flats have a wider range of resale prices, and closer to the higher side of resale prices.
 
-### The Data Science Process
+![Resale Price by Flat Types](../images/by_flattypes.png)
+![Resale Price by Flat Model](../images/by_flatmodel.png)
+![Resale Price by Mid of Floor Range](../images/by_floor.png)
+![Resale Price by Remaining Lease Years](../images/by_remaining_lease.png)
 
-**Problem Statement**
-- Is it clear what the student plans to do?
-- What type of model will be developed?
-- How will success be evaluated?
-- Is the scope of the project appropriate?
-- Is it clear who cares about this or why this is important to investigate?
-- Does the student consider the audience and the primary and secondary stakeholders?
+## Preprocessing and Feature Engineering
+In this section, I performed the following
+1. Simple encode important categorical features
+2. Further re-categorize features that can do one-hot encoding
+    - Group flat_model, flat_model, full_flat_type into flat_type
+    - Group towns into regions, and remove postal, and planning_area, mrt_name as redundant features
+3. Perform one-hot encoding on selected categorical features, after grouping them into suitable features
+4. Introduce interaction terms for sec_sch_nearest_distance and cutoff point
+5. Log predicted variable (resale_price), to make it into a normal distribution
 
-**Data Cleaning and EDA**
-- Are missing values imputed appropriately?
-- Are distributions examined and described?
-- Are outliers identified and addressed?
-- Are appropriate summary statistics provided?
-- Are steps taken during data cleaning and EDA framed appropriately?
-- Does the student address whether or not they are likely to be able to answer their problem statement with the provided data given what they've discovered during EDA?
+## Modeling
+In this section, I will be running a few models. The goal is to explore their potential as the best model to run, so I can re-identify the right features and retrain this best model
+1. I will be running Linear Regression, Ridge Regression, Lasso Regression and ElasticNet Regression
+2. For each of the models, I will try a base version first
+    - vanilla Linear Regression vs Linear Regression with standard scaling
+    - normal Ridge Regression vs Ridge Regression with tuned hyperparameters
+    - normal Lasso Regression vs Lasso Regression with tuned hyperparameters
+    - normal ElasticNet vs ElasticNet with tuned hyperparameters
+3. For each of the models, I will be doing the evaluation on the r2 scores of the train and validation sets in train-test-split. I will choose the model balancing on these 3 criteria:
+    - High r2 score on validation set
+    - low RMSE score
+    - Low difference of r2 scores between train and validation set, which means it is not a biased model
 
-**Preprocessing and Modeling**
-- Are categorical variables one-hot encoded?
-- Does the student investigate or manufacture features with linear relationships to the target?
-- Have the data been scaled appropriately?
-- Does the student properly split and/or sample the data for validation/training purposes?
-- Does the student utilize feature selection to remove noisy or multi-collinear features?
-- Does the student test and evaluate a variety of models to identify a production algorithm (**AT MINIMUM:** linear regression, lasso, and ridge)?
-- Does the student defend their choice of production model relevant to the data at hand and the problem?
-- Does the student explain how the model works and evaluate its performance successes/downfalls?
+## Model tuning 
+Ridge regression is the one that fits the criteria most. There are a few features that will be removed due to multicollinearity effects and their effect based on the absolute figure of the coefficients.
 
-**Evaluation and Conceptual Understanding**
-- Does the student accurately identify and explain the baseline score?
-- Does the student select and use metrics relevant to the problem objective?
-- Is more than one metric utilized in order to better assess performance?
-- Does the student interpret the results of their model for purposes of inference?
-- Is domain knowledge demonstrated when interpreting results?
-- Does the student provide appropriate interpretation with regards to descriptive and inferential statistics?
+After removing the features, I will fit it into the ridge regression model.
+- The second optimized ridge model improved r2 score on the validate data slightly by 0.0000001 as compared to the first optimized ridge model
+    - This means there's a higher amount of train data being able to be explained by the model
+- Also, the RMSE for the refined Ridge model is slighly lower than the first optimized ridge model
+    - this means the model has a smaller error
+- The difference in R2 score is also smaller
+    - this might mean that the model is less biased, which is an improvement
 
-**Conclusion and Recommendations**
-- Does the student provide appropriate context to connect individual steps back to the overall project?
-- Is it clear how the final recommendations were reached?
-- Are the conclusions/recommendations clearly stated?
-- Does the conclusion answer the original problem statement?
-- Does the student address how findings of this research can be applied for the benefit of stakeholders?
-- Are future steps to move the project forward identified?
+Here is the features from the improved model. 
 
-### Organization and Professionalism
+![Feature Coefficients](../images/feature_coeff.png)
 
-**Project Organization**
-- Are modules imported correctly (using appropriate aliases)?
-- Are data imported/saved using relative paths?
-- Does the README provide a good executive summary of the project?
-- Is markdown formatting used appropriately to structure notebooks?
-- Are there an appropriate amount of comments to support the code?
-- Are files & directories organized correctly?
-- Are there unnecessary files included?
-- Do files and directories have well-structured, appropriate, consistent names?
+-----
 
-**Visualizations**
-- Are sufficient visualizations provided?
-- Do plots accurately demonstrate valid relationships?
-- Are plots labeled properly?
-- Are plots interpreted appropriately?
-- Are plots formatted and scaled appropriately for inclusion in a notebook-based technical report?
+**Conclusion and Recommendation:** 
 
-**Python Syntax and Control Flow**
-- Is care taken to write human readable code?
-- Is the code syntactically correct (no runtime errors)?
-- Does the code generate desired results (logically correct)?
-- Does the code follows general best practices and style guidelines?
-- Are Pandas functions used appropriately?
-- Are `sklearn` methods used appropriately?
+The current project of predicting resale market for HDBs focus on the features, more than the effect of time. One of the reasons is that, unlike stock market, HDB prices (or property prices in general) is deemed to be pretty stable and increase over a long period of time.
 
-**Presentation**
-- Is the problem statement clearly presented?
-- Does a strong narrative run through the presentation building toward a final conclusion?
-- Are the conclusions/recommendations clearly stated?
-- Is the level of technicality appropriate for the intended audience?
-- Is the student substantially over or under time?
-- Does the student appropriately pace their presentation?
-- Does the student deliver their message with clarity and volume?
-- Are appropriate visualizations generated for the intended audience?
-- Are visualizations necessary and useful for supporting conclusions/explaining findings?
+Therefore, the recommendation to buyers is to look for a HDB, with considerations of salient features such as region, size, distance to amenities, and age. However, future HDB buyers should also consider non-tangible qualities such as personal preference and distance to family. 
 
-In order to pass the project, students must earn a minimum score of 1 for each category.
-- Earning below a 1 in one or more of the above categories would result in a failing project.
-- While a minimum of 1 in each category is the required threshold for graduation, students should aim to earn at least an average of 1.5 across each category. An average score below 1.5, while it may be passing, means students may want to solicit specific feedback in order to significantly improve the project before showcasing it as part of a portfolio or the job search.
+**Future enhancements**
+I think the model can be improve from its current state. Here are some ideas:
 
-### REMEMBER:
+1. Group by number of rooms 
+    - A 4R HDB flat has the most demand. 
+    - In fact, most of the outliers lies with the 4R, 5R, and Executive HDB flats (https://www.propertyguru.com.sg/property-guides/million-dollar-4-room-flats-72832)
+    - By controlling the number of rooms, we can train better models with specific features for a 4R-HDB flats
 
-This is a learning environment and you are encouraged to try new things, even if they don't work out as well as you planned! While this rubric outlines what we look for in a _good_ project, it is up to you to go above and beyond to create a _great_ project. **Learn from your failures and you'll be prepared to succeed in the workforce**.
-=======
-# ga_proj2_dsif9
->>>>>>> 01e0b083377a29d7be6bf22ac899685772fab2b8
+2. Group by regions
+    - At first glance, AMK seems to be an undervalued town
+    - There is a possibility that the area has older flats; hdb_age is one of the more important features in predicting resale_prices
+    - We can do an EDA to find out more
+    
+3. Group by amenities 
+    - currently, amenities such as mrt, school, bus stop, mall and hawker center are shown in meters
+    - realistically, amenities within a certain circumference (not by absolute distance) would be considered by a potential buyer
+    - therefore, it would be great to group them together for a better analysis 
+4. I can further prune the model into lesser features, dropping more features that do not matter
+   - for example, I can further drop the features, starting from model_Type S1
+5. r2 scores of the models are consistently hovering at 0.838. One of the reasons is due to the grouping of town into regions and that might not be an effective predictor. 
+   - For example, Geylang is considered 'central', yet the median resale price is one of the bottom 5.
+
+---
+## Libraries
+* Pandas
+* Numpy
+* Matplotlib
+* Seaborn
+* Scikit Learn 
+    * preprocessing
+    * linear model
+    * model selection
+    * metrics
+    * TransformedTargetRegressor 
+
+---
+
+## References
+1. [the URA list of regions by towns](https://www.newlaunchesreview.com/regions-of-singapore/)
+2. [Commentary of the move of ACS to Tengah](https://www.straitstimes.com/singapore/housing/acs-primary-relocation-likely-to-boost-future-tengah-bto-application-rates-interest-in-bukit-batok-ecs-analysts)
+3. [Singapore Public Housing wikipedia](https://en.wikipedia.org/wiki/Public_housing_in_Singapore)
