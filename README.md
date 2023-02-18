@@ -149,18 +149,20 @@ Here is the features from the improved model.
 
 -----
 
-**Conclusion and Recommendation:** 
+## Conclusion and Recommendation
 
 The current project of predicting resale market for HDBs focus on the features, more than the effect of time. One of the reasons is that, unlike stock market, HDB prices (or property prices in general) is deemed to be pretty stable and increase over a long period of time.
 
 Therefore, the recommendation to buyers is to look for a HDB, with considerations of salient features such as region, size, distance to amenities, and age. However, future HDB buyers should also consider non-tangible qualities such as personal preference and distance to family. 
 
-**Future enhancements**
+-----
+
+## Future enhancements
 I think the model can be improve from its current state. Here are some ideas:
 
 1. Group by number of rooms 
     - A 4R HDB flat has the most demand. 
-    - In fact, most of the outliers lies with the 4R, 5R, and Executive HDB flats (https://www.propertyguru.com.sg/property-guides/million-dollar-4-room-flats-72832)
+    - In fact, most of the outliers lies with the [4R, 5R, and Executive HDB flats](https://www.propertyguru.com.sg/property-guides/million-dollar-4-room-flats-72832)
     - By controlling the number of rooms, we can train better models with specific features for a 4R-HDB flats
 
 2. Group by regions
@@ -177,7 +179,8 @@ I think the model can be improve from its current state. Here are some ideas:
 5. r2 scores of the models are consistently hovering at 0.838. One of the reasons is due to the grouping of town into regions and that might not be an effective predictor. 
    - For example, Geylang is considered 'central', yet the median resale price is one of the bottom 5.
 
----
+----
+
 ## Libraries
 * Pandas
 * Numpy
@@ -190,7 +193,7 @@ I think the model can be improve from its current state. Here are some ideas:
     * metrics
     * TransformedTargetRegressor 
 
----
+----
 
 ## References
 1. [the URA list of regions by towns](https://www.newlaunchesreview.com/regions-of-singapore/)
