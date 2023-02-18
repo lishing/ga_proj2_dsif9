@@ -97,7 +97,7 @@ The project follows the techniques required in a data science project
     - Temporal : their effect on y-variable
     - categorical: to further group them into suitable variables
 
-### Findings (to add viz for the rest)
+### Findings 
 1. Without controlling the flat type, HDB resale flats of town and planning areas are roughly the same. I will drop planning area (the higher amount of variables), and keep town for further grouping
 2. Most of the outliers are for bigger flat types - notably 3-room, 4-room and 5-room, which has a long tail.
 3. When I examine the median resale prices by the middle storey of storey range, there is a linear relationship (except for floor 15). 
